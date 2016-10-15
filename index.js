@@ -1,0 +1,1 @@
+import * as FK from 'src\flesch-kinkaid'
