@@ -64,5 +64,5 @@ const sentences = x => (x.split('. ') || ['']).length
 const syllablesPerWord = x => syllables(x) / words(x)
 const wordsPerSentence = x => words(x) / sentences(x)
 
-const rate = x => 206.835 - 1.015 * wordsPerSentence(x) - 84.6 * syllablesPerWord(x)
-const grade = x => 0.39 * wordsPerSentence(x) + 11.8 * syllablesPerWord(x) - 15.59
+export const rate = x => 206.835 - 1.015 * wordsPerSentence(x) - 84.6 * syllablesPerWord(x)
+export const grade = x => 0.39 * wordsPerSentence(x) + 11.8 * syllablesPerWord(x) - 15.59
