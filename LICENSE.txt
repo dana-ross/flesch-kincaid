@@ -1,5 +1,5 @@
 Syllable calculation based on a Java port of Perl's syllable calculation, with my own additions
-See original at https://github.com/ogrodnek/java_fathom/blob/master/src/main/java/com/representqueens/lingua/en/Syllable.java#L133
+See original at https://github.com/ogrodnek/java_fathom/blob/master/src/main/java/com/representqueens/lingua/en/Syllable.java
 
 Inherits Perl's licensing terms: http://dev.perl.org/licenses/
 
@@ -9,5 +9,5 @@ It is free software; you can redistribute it and/or modify it under the terms of
 
 a) the GNU General Public License as published by the Free Software Foundation; either version 1, or (at your option) any later version, or
 
-b) the "Artistic License".
+b) the "Artistic License" (http://directory.fsf.org/wiki/License:ArtisticLicense2.0)
 
