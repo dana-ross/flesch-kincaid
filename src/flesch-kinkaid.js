@@ -46,21 +46,19 @@ const syllables = x => {
     // [2] exception for 7 words:
     // coadjutor coagulable coagulate coalesce coalescent coalition coaxial
 
-    if (undefined === x || null === x || '' === x) return 0;
+    const xx = x.toLowerCase().replace(/'/g, '').replace(/e\b/g, '')
+    const scrugg = xx.split(/[^aeiouy]+/).filter(Boolean) // '-' should be perhaps added?
 
-    const xx = x.toLowerCase().replace(/'/g, '').replace(/e\b/g, '');
-    if (1 === xx.length) return 1;
-
-    const scrugg = xx.split(/[^aeiouy]+/).filter(Boolean); // '-' should be perhaps added?
-
-    return subSyl.map(r => (xx.match(r) || []).length).reduce((a, b) => a - b) +
+    return (undefined === x || null === x || '' === x) ? 0 :
+           (1 === xx.length) ? 1 :
+           subSyl.map(r => (xx.match(r) || []).length).reduce((a, b) => a - b) +
            addSyl.map(r => (xx.match(r) || []).length).reduce((a, b) => a + b) +
            scrugg.length - ((scrugg.length > 0 && '' === scrugg[0]) ? 1 : 0) +
            // got no vowels? ("the", "crwth")
            xx.split(/\b/).map(x => x.trim()).filter(Boolean).filter(x => !x.match(/[.,'!?]/g)).map(x => x.match(/[aeiouy]/) ? 0 : 1).reduce((a, b) => a + b)
 
-
 }
+
 const words = x => (x.split(/\s+/) || ['']).length
 const sentences = x => (x.split('. ') || ['']).length
 const syllablesPerWord = x => syllables(x) / words(x)
