@@ -1,6 +1,5 @@
 /*eslint prefer-const: "error", sourceType: "module" */
 /*eslint-env es6*/
-// const syllables = x => (x.replace(/e$/i, '').match(/[aeiouy]+/gi) || ['']).length
 
 const syllables = x => {
     /*
@@ -54,30 +53,12 @@ const syllables = x => {
 
     const scrugg = xx.split(/[^aeiouy]+/).filter(Boolean); // '-' should be perhaps added?
 
-    var syl = 0;
+    return subSyl.map(r => (xx.match(r) || []).length).reduce((a, b) => a - b) +
+           addSyl.map(r => (xx.match(r) || []).length).reduce((a, b) => a + b) +
+           scrugg.length - ((scrugg.length > 0 && '' === scrugg[0]) ? 1 : 0) +
+           // got no vowels? ("the", "crwth")
+           xx.split(/\b/).map(x => x.trim()).filter(Boolean).filter(x => !x.match(/[.,'!?]/g)).map(x => x.match(/[aeiouy]/) ? 0 : 1).reduce((a, b) => a + b)
 
-    for (var regex of subSyl) {
-        syl -= (xx.match(regex) || []).length;
-    }
-
-    for (var regex of addSyl) {
-        syl += (xx.match(regex) || []).length;
-    }
-
-    if (scrugg.length > 0 && '' === scrugg[0]) {
-        syl += scrugg.length - 1;
-    } else {
-        syl += scrugg.length;
-    }
-
-    for (var word of xx.split(/\b/).map(x => x.trim()).filter(Boolean).filter(x => !x.match(/[.,'!?]/g))) {
-        if (!word.match(/[aeiouy]/)) {
-            // got no vowels? ("the", "crwth")
-            syl += 1;
-        }
-    }
-
-    return syl;
 
 }
 const words = x => (x.split(/\s+/) || ['']).length
@@ -102,3 +83,6 @@ test(words, "The Australian platypus is seemingly a hybrid of a mammal and repti
 test(syllables, "The Australian platypus is seemingly a hybrid of a mammal and reptilian creature.", 25);
 test(rate, "The Australian platypus is seemingly a hybrid of a mammal and reptilian creature.", 37);
 test(grade, "The Australian platypus is seemingly a hybrid of a mammal and reptilian creature.", 13);
+
+test(syllables, 'agreeable', 4)
+test(syllables, 'belguim', 2)
