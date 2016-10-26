@@ -12,7 +12,9 @@ npm install daveross/flesch-kincaid
 
 ## License
 
-Syllable parsing is based on Perl's Lingua::EN::Syllables. As a derivative work, this library inherits [Perl's license terms](http://dev.perl.org/licenses/).
+Syllable calculation based on a [Java port](https://github.com/ogrodnek/java_fathom/blob/master/src/main/java/com/representqueens/lingua/en/Syllable.java) of Perl's Lingua::EN::Syllables, with my own additions
+
+As a derivative work, this library inherits [Perl's license terms](http://dev.perl.org/licenses/).
 
 > Perl5 is Copyright (C) 1993-2005, by Larry Wall and others.  
 > It is free software; you can redistribute it and/or modify it under the terms of either:  
