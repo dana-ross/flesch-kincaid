@@ -2,7 +2,7 @@
   "name": "flesch-kincaid",
   "version": "1.0.0",
   "description": "Flesch-Kincaid readability score and grade level calculation",
-  "main": "flesch-kinkaid.js",
+  "main": "flesch-kincaid.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/daveross/flesch-kincaid"
